@@ -44,8 +44,7 @@ It helps users visualize how their room could look after rearranging furniture o
 🌐 Live Demo
 
 👉 Click here to open the live app on Streamlit Cloud
-(The link will be updated once deployment is done.)
-
+https://asthetiq-interior-designer.streamlit.app/
 
 
 ## 📂 Project Structure
@@ -62,3 +61,5 @@ AsthetIQ/
 Developed by Shubham Sharma
 📧 Contact: shubhamrsharma28@gmail.com
 ⭐ Feel free to fork, modify and enhance!
+
+Built by Shubham, powered by AI.
