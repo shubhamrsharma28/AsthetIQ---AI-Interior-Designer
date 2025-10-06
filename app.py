@@ -6,6 +6,8 @@ import streamlit as st
 from PIL import Image, ImageDraw
 import numpy as np
 
+st.set_page_config(page_title="AsthetIQ", layout="wide")
+
 # Lazy-load YOLO model
 @st.cache_resource
 def load_model():
@@ -87,7 +89,6 @@ def annotate_image(image_path, detected_objects, suggestions, output_path):
     return output_path
 
 # Streamlit UI
-st.set_page_config(page_title="AsthetIQ", layout="wide")
 st.title("🏡 AsthetIQ – AI-Powered Virtual Interior Designer")
 st.write("Upload your *room image* and a *reference image* to get *furniture placement suggestions*.")
 
