@@ -8,7 +8,6 @@ import numpy as np
 
 st.set_page_config(page_title="AsthetIQ", layout="wide")
 
-# Lazy-load YOLO model
 @st.cache_resource
 def load_model():
     from ultralytics import YOLO
@@ -16,8 +15,16 @@ def load_model():
 
 model = load_model()
 
-# Define object categories for furniture
-OBJECT_NAMES = {56: "chair", 57: "couch", 58: "potted plant", 59: "bed", 60: "table"}
+# Expanded object categories
+OBJECT_NAMES = {
+    56: "chair",
+    57: "couch",         # alias: sofa
+    58: "potted plant",
+    59: "bed",
+    60: "table",         # alias: center table
+    61: "lamp",
+    62: "carpet"
+}
 
 def detect_objects(image_path):
     results = model(image_path)
@@ -48,16 +55,44 @@ def generate_suggestions(room_objects, reference_objects):
     for obj_name, ref_center in reference_positions.items():
         if obj_name in room_positions:
             room_center = room_positions[obj_name]
-            dx, dy = ref_center[0] - room_center[0], ref_center[1] - room_center[1]
+            dx = ref_center[0] - room_center[0]
+            dy = ref_center[1] - room_center[1]
             movement = []
 
-            if abs(dx) > 30:
+            threshold = 30
+
+            if abs(dx) > threshold:
                 movement.append("right" if dx > 0 else "left")
-            if abs(dy) > 30:
+            if abs(dy) > threshold:
                 movement.append("down" if dy > 0 else "up")
 
             if movement:
-                suggestions.append(f"➡️ {obj_name}: Move {' and '.join(movement)}")
+                verb = {
+                    "chair": "Adjust",
+                    "couch": "Shift",
+                    "sofa": "Shift",
+                    "table": "Reposition",
+                    "center table": "Reposition",
+                    "potted plant": "Move",
+                    "bed": "Reposition",
+                    "lamp": "Adjust",
+                    "carpet": "Reposition"
+                }.get(obj_name, "Move")
+
+                emoji = {
+                    "chair": "🪑",
+                    "couch": "🛋️",
+                    "sofa": "🛋️",
+                    "table": "🧺",
+                    "center table": "🧺",
+                    "potted plant": "🪴",
+                    "bed": "🛏️",
+                    "lamp": "💡",
+                    "carpet": "🧶"
+                }.get(obj_name, "➡️")
+
+                suggestion = f"{emoji} {obj_name}: {verb} {' and '.join(movement)} for better placement"
+                suggestions.append(suggestion)
 
     if not suggestions:
         suggestions.append("✅ Your furniture layout is already optimal!")
