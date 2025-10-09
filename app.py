@@ -85,7 +85,7 @@ def generate_suggestions(room_objects, reference_objects):
                     "sofa": "🛋️",
                     "table": "🧺",
                     "center table": "🧺",
-                    "potted plant": "🌼",
+                    "potted plant": "🪴",
                     "bed": "🛏️",
                     "lamp": "💡",
                     "carpet": "🧶"
@@ -140,9 +140,9 @@ if room_image_file and reference_image_file:
 
         col1, col2 = st.columns(2)
         with col1:
-            st.image(room_image_path, caption="📸 Uploaded Room Image", use_container_width=True)
+            st.image(room_image_path, caption="📸 Uploaded Room Image", use_column_width=True)
         with col2:
-            st.image(reference_image_path, caption="🎨 Reference Image", use_container_width=True)
+            st.image(reference_image_path, caption="🎨 Reference Image", use_column_width=True)
 
         room_objects = detect_objects(room_image_path)
         reference_objects = detect_objects(reference_image_path)
@@ -151,7 +151,7 @@ if room_image_file and reference_image_file:
         detected_image_path = "suggested_layout.jpg"
         annotated_image_path = annotate_image(room_image_path, room_objects, suggestions, detected_image_path)
 
-        st.image(annotated_image_path, caption="📍 Detected Objects & Suggested Changes", use_container_width=True)
+        st.image(annotated_image_path, caption="📍 Detected Objects & Suggested Changes", use_column_width=True)
 
         st.subheader("📋 Suggested Furniture Placements")
         for suggestion in suggestions:
