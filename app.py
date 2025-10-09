@@ -135,8 +135,8 @@ if room_image_file and reference_image_file:
         room_image_path = "room_image.jpg"
         reference_image_path = "reference_image.jpg"
 
-        Image.open(room_image_file).save(room_image_path)
-        Image.open(reference_image_file).save(reference_image_path)
+        Image.open(room_image_file).convert("RGB").save(room_image_path, format="JPEG")
+        Image.open(reference_image_file).convert("RGB").save(reference_image_path, format="JPEG")
 
         col1, col2 = st.columns(2)
         with col1:
@@ -162,4 +162,3 @@ if room_image_file and reference_image_file:
 
 else:
     st.info("Please upload both images to begin.")
-
