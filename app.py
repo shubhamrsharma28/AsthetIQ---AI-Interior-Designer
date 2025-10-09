@@ -85,7 +85,7 @@ def generate_suggestions(room_objects, reference_objects):
                     "sofa": "🛋️",
                     "table": "🧺",
                     "center table": "🧺",
-                    "potted plant": "🪴",
+                    "potted plant": "🌼",
                     "bed": "🛏️",
                     "lamp": "💡",
                     "carpet": "🧶"
@@ -162,3 +162,4 @@ if room_image_file and reference_image_file:
 
 else:
     st.info("Please upload both images to begin.")
+
