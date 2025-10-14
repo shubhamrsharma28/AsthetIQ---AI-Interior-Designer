@@ -15,13 +15,13 @@ def load_model():
 
 model = load_model()
 
-# Expanded object categories
+
 OBJECT_NAMES = {
     56: "chair",
-    57: "couch",         # alias: sofa
+    57: "couch",         
     58: "potted plant",
     59: "bed",
-    60: "table",         # alias: center table
+    60: "table",        
     61: "lamp",
     62: "carpet"
 }
@@ -123,7 +123,7 @@ def annotate_image(image_path, detected_objects, suggestions, output_path):
     image.save(output_path)
     return output_path
 
-# Streamlit UI
+# from here, the main UI code of Streamlit starts :
 st.title("🏡 AsthetIQ – AI-Powered Virtual Interior Designer")
 st.write("Upload your *room image* and a *reference image* to get *furniture placement suggestions*.")
 
@@ -162,3 +162,4 @@ if room_image_file and reference_image_file:
 
 else:
     st.info("Please upload both images to begin.")
+
