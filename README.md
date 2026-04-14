@@ -48,6 +48,7 @@ https://asthetiq-interior-designer.streamlit.app/
 
 
 ## 📂 Project Structure
+```text
 AsthetIQ/
 │
 ├── app.py # Main Streamlit app
@@ -55,11 +56,11 @@ AsthetIQ/
 ├── room_image.jpg # Example room image
 ├── reference_image.jpg # Example reference image
 └── requirements.txt # Dependencies
-
+```
 ## 💬 Credits
 
 Developed by Shubham Sharma
 📧 Contact: shubhamrsharma28@gmail.com
 ⭐ Feel free to fork, modify and enhance!
 
-Built by Shubham, powered by AI.
+Built with ❤️ by Shubham Sharma.
